@@ -47,7 +47,7 @@ public class OMergeTransformer extends OAbstractLookupTransformer {
     Object joinValue = ((ODocument) ((OIdentifiable) input).getRecord()).field(joinFieldName);
     final Object result = lookup(joinValue, false);
 
-    log(OETLProcessor.LOG_LEVELS.DEBUG, "joinValue=%s, lookupResult=%s", joinValue, result);
+    log(OETLProcessor.LOG_LEVELS.DEBUG, "joinValue=%s, lookupResult=%s,resultSize=%s", joinValue, result,OMultiValue.getSize(result));
 
     if (result == null || OMultiValue.getSize(result) == 0) {
       // APPLY THE STRATEGY DEFINED IN unresolvedLinkAction
